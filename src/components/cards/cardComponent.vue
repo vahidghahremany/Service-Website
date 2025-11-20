@@ -24,7 +24,7 @@ const props = defineProps({
           <starIcon />
           <h5>{{ props.item.score }}</h5>
         </div>
-        <div class="price">{{ "$" + props.item.price + ".000" }}</div>
+        <h3 class="price">{{ "$" + props.item.price + ".000" }}</h3>
       </div>
       <div class="card-btn">
         <button type="button"><bagAddIcon /></button>
@@ -48,19 +48,27 @@ const props = defineProps({
   overflow: hidden;
   font-family: "font-2", sans-serif;
 }
-.card-img {
-  width: 100%;
+.card:hover img {
+  transform: rotate(120deg);
 }
-.card-img img {
+.card .card-img {
   width: 200px;
   height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.card-body {
+.card .card-img img {
+  width: 150px;
+  height: 150px;
+  transition: all 1s ease;
+}
+.card .card-body {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.card-content {
+.card .card-body .card-content {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -71,23 +79,36 @@ const props = defineProps({
   display: flex;
   align-items: center;
   gap: 4px;
+  margin-top: 4px;
   color: rgb(255, 219, 47);
 }
 .score svg {
   fill: rgb(255, 219, 47);
 }
+.score h5 {
+  font-size: 14px;
+}
+.price {
+  font-size: 17px;
+}
 .card-btn button {
-  width: 80px;
-  height: 80px;
+  width: 68px;
+  height: 68px;
   background-color: var(--secondary-color);
   display: flex;
   justify-content: center;
-  padding-top: 16px;
+  padding-top: 18px;
   transition: all 0.5s ease;
   cursor: pointer;
-  border-top-left-radius: 10px;
+  border-top-left-radius: 16px;
 }
 .card-btn button:hover svg {
   scale: 1.1;
+}
+
+@media (width <= 768px) {
+  .card {
+    width: 250px;
+  }
 }
 </style>

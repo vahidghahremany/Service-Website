@@ -2,6 +2,11 @@
 import { RouterLink } from "vue-router";
 import bagIcon from "../icons/bagIcon.vue";
 import userIcon from "../icons/userIcon.vue";
+import homeBoldIcon from "../icons/homeBoldIcon.vue";
+import menuBoldIcon from "../icons/manuBoldIcon.vue";
+import blogBoldIcon from "../icons/blogBoldIcon.vue";
+import pinBoldIcon from "../icons/pinBoldIcon.vue";
+import chatBoldIcon from "../icons/chatBoldIcon.vue";
 </script>
 
 <template>
@@ -11,11 +16,26 @@ import userIcon from "../icons/userIcon.vue";
       <button type="button" class="action-btn"><bagIcon /></button>
     </div>
     <nav>
-      <RouterLink>Home</RouterLink>
-      <RouterLink>Menu</RouterLink>
-      <RouterLink>Reservation</RouterLink>
-      <RouterLink>Blog</RouterLink>
-      <RouterLink>contact</RouterLink>
+      <div class="link-group">
+        <homeBoldIcon />
+        <RouterLink>Home</RouterLink>
+      </div>
+      <div class="link-group">
+        <menuBoldIcon />
+        <RouterLink>Menu</RouterLink>
+      </div>
+      <div class="link-group">
+        <pinBoldIcon />
+        <RouterLink>Reservation</RouterLink>
+      </div>
+      <div class="link-group">
+        <blogBoldIcon />
+        <RouterLink>Blog</RouterLink>
+      </div>
+      <div class="lonk-group">
+        <chatBoldIcon />
+        <RouterLink>contact</RouterLink>
+      </div>
     </nav>
     <div class="logo">
       <h2>LOGO</h2>
@@ -36,9 +56,14 @@ import userIcon from "../icons/userIcon.vue";
 }
 .action-btn {
   padding: 8px 10px;
-  border-radius: 12px;
+  border-radius: 16px;
   border: 2px solid var(--light-color);
   cursor: pointer;
+}
+.link-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 @media (width < 768px) {
