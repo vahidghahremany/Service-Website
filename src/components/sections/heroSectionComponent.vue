@@ -13,6 +13,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
-  z-index: -9;
+  z-index: -99;
 }
 </style>

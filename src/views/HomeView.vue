@@ -1,4 +1,5 @@
 <script setup>
+import cartModalComponent from "@/components/modals/cartModalComponent.vue";
 import heroSectionComponent from "@/components/sections/heroSectionComponent.vue";
 import landingSectionComponent from "@/components/sections/landingSectionComponent.vue";
 import cardSectionComponent from "@/components/sections/cardSectionComponent.vue";
@@ -8,6 +9,7 @@ import apptizerSectionComponent from "@/components/sections/apptizerSectionCompo
 </script>
 
 <template>
+  <cartModalComponent />
   <heroSectionComponent />
   <landingSectionComponent />
   <cardSectionComponent />

@@ -18,6 +18,7 @@
   width: 100%;
   height: 100dvh;
   position: relative;
+  z-index: -5;
 }
 .section-content {
   width: 100%;

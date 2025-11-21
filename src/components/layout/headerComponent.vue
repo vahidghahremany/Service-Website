@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import { useCartStore } from "@/stores/cart";
 import bagIcon from "../icons/bagIcon.vue";
 import userIcon from "../icons/userIcon.vue";
 import homeBoldIcon from "../icons/homeBoldIcon.vue";
@@ -7,13 +8,19 @@ import menuBoldIcon from "../icons/manuBoldIcon.vue";
 import blogBoldIcon from "../icons/blogBoldIcon.vue";
 import pinBoldIcon from "../icons/pinBoldIcon.vue";
 import chatBoldIcon from "../icons/chatBoldIcon.vue";
+
+const cart = useCartStore();
+
+function handleCartClick() {
+  cart.toggleCart();
+}
 </script>
 
 <template>
   <div class="desktop-navbar">
     <div class="actions">
       <button type="button" class="action-btn"><userIcon /></button>
-      <button type="button" class="action-btn"><bagIcon /></button>
+      <button type="button" class="action-btn" @click="handleCartClick"><bagIcon /></button>
     </div>
     <nav>
       <div class="link-group">

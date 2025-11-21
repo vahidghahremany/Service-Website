@@ -1,4 +1,5 @@
 <script setup>
+import { useCartStore } from "@/stores/cart";
 import bagAddIcon from "../icons/bagAddIcon.vue";
 import starIcon from "../icons/starIcon.vue";
 
@@ -8,6 +9,12 @@ const props = defineProps({
     required: true,
   },
 });
+
+const cart = useCartStore();
+
+function handleAddToCart() {
+  cart.addToCart(props.item, 1);
+}
 </script>
 
 <template>
@@ -27,7 +34,7 @@ const props = defineProps({
         <h3 class="price">{{ "$" + props.item.price + ".000" }}</h3>
       </div>
       <div class="card-btn">
-        <button type="button"><bagAddIcon /></button>
+        <button type="button" @click.stop="handleAddToCart"><bagAddIcon /></button>
       </div>
     </div>
   </div>
