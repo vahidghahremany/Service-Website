@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref, computed } from "vue";
+import { ref, computed, reactive } from "vue";
 
 export const useCartStore = defineStore("cart", () => {
   const isOpen = ref(false);
@@ -53,11 +53,43 @@ export const useCartStore = defineStore("cart", () => {
     cartItem.value = [];
   }
 
+  function increaseQuantity(id) {
+    const item = this.cartItem.find((i) => i.id === id);
+    if (item) item.quantity++;
+  }
+
+  function decreaseQuantity(id) {
+    const item = this.cartItem.find((i) => i.id === id);
+    if (item && item.quantity > 1) {
+      item.quantity--;
+    }
+  }
+
+  const notificationState = reactive({
+    isVisible: false,
+    message: " ",
+    type: "success",
+  });
+
+  function showNotification(msg, type = "success") {
+    notificationState.message = msg;
+    notificationState.type = type;
+    notificationState.isVisible = true;
+
+    setTimeout(() => {
+      notificationState.isVisible = false;
+    }, 3000);
+  }
+
   return {
     isOpen,
     cartItem,
     itemCount,
     totalPrice,
+    notificationState,
+    showNotification,
+    increaseQuantity,
+    decreaseQuantity,
     toggleCart,
     openCart,
     closeCart,

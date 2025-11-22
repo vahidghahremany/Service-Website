@@ -4,6 +4,10 @@ import bagAddIcon from "../icons/bagAddIcon.vue";
 import starIcon from "../icons/starIcon.vue";
 
 const props = defineProps({
+  variant: {
+    type: String,
+    default: "white",
+  },
   item: {
     type: Object,
     required: true,
@@ -14,11 +18,12 @@ const cart = useCartStore();
 
 function handleAddToCart() {
   cart.addToCart(props.item, 1);
+  cart.showNotification(`${props.item.name} added to cart`, "success");
 }
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" :class="variant">
     <div class="card-header">
       <h3>{{ props.item.name }}</h3>
     </div>
@@ -44,19 +49,25 @@ function handleAddToCart() {
 .card {
   width: 200px;
   height: 310px;
-  background-color: var(--primary-color);
   border-radius: 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--light-color);
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   padding: 20px 0 0;
   overflow: hidden;
   font-family: "font-2", sans-serif;
 }
+.card.black {
+  color: var(--light-color);
+  background-color: var(--primary-color);
+}
+.card.white {
+  color: var(--primary-color);
+  background-color: var(--light-color);
+}
 .card:hover img {
-  transform: rotate(120deg);
+  transform: rotate(360deg);
 }
 .card .card-img {
   width: 200px;
@@ -68,7 +79,7 @@ function handleAddToCart() {
 .card .card-img img {
   width: 150px;
   height: 150px;
-  transition: all 1s ease;
+  transition: all 1.5s ease;
 }
 .card .card-body {
   width: 100%;
@@ -79,8 +90,8 @@ function handleAddToCart() {
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 4px;
-  padding: 0 0px 24px 24px;
+  gap: 8px;
+  padding: 0 0px 16px 24px;
 }
 .score {
   display: flex;
@@ -108,9 +119,11 @@ function handleAddToCart() {
   transition: all 0.5s ease;
   cursor: pointer;
   border-top-left-radius: 16px;
+  transform: translateY(2px);
 }
 .card-btn button:hover svg {
-  scale: 1.1;
+  scale: 1.2;
+  transition: all 0.3s ease;
 }
 
 @media (width <= 768px) {

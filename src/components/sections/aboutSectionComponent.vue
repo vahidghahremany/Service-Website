@@ -52,7 +52,7 @@
   scale: 1.8;
 }
 
-@media (width < 992px) {
+@media (width <= 1024px) {
   .about-container {
     width: 100%;
     flex-direction: column;
@@ -61,7 +61,12 @@
     padding: 2rem;
   }
   .section-title {
+    order: 2;
     width: 100%;
+    align-items: center;
+  }
+  .section-title p {
+    text-align: center;
   }
   .section-img img {
     scale: 1;

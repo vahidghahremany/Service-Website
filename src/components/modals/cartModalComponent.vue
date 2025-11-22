@@ -11,49 +11,77 @@ function handleBackdropClick(e) {
 </script>
 
 <template>
-  <div v-if="cart.isOpen" class="modal-backdrop" @click="handleBackdropClick">
-    <div class="modal">
-      <div class="modal-header">
-        <h2>Shopping Cart</h2>
-        <button class="close-btn" @click="cart.closeCart">×</button>
-      </div>
-      <div class="cart-items">
-        <div class="cart-item" v-for="item in cart.cartItem" :key="item.id">
-          <div class="cart-img">
-            <img :src="item.image" alt="pizza img" />
+  <transition name="fade">
+    <div v-if="cart.isOpen" class="modal-container centered" @click="handleBackdropClick">
+      <transition name="slide">
+        <div class="modal">
+          <div class="modal-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-btn" @click="cart.closeCart">×</button>
           </div>
-          <div>
-            <h4>{{ item.title || item.name }}</h4>
-            <p>$ {{ item.price + "000" }}</p>
-            <p>quantity: {{ item.quantity }}</p>
+          <div class="cart-items">
+            <div class="cart-item" v-for="item in cart.cartItem" :key="item.id">
+              <div class="cart-img">
+                <img :src="item.image" alt="pizza img" />
+              </div>
+              <div class="cart-body">
+                <h4>{{ item.title || item.name }}</h4>
+                <h5>$ {{ item.price + "000" }}</h5>
+                <div class="quantity-box">
+                  <button @click="cart.decreaseQuantity(item.id)" class="qty-btn">−</button>
+                  <span class="qty-number">{{ item.quantity }}</span>
+                  <button @click="cart.increaseQuantity(item.id)" class="qty-btn">+</button>
+                </div>
+              </div>
+              <button class="remove-btn" @click="cart.removeItem(item.id)">Delete</button>
+            </div>
+            <p v-if="cart.cartItem.length === 0" class="empty-cart">Shopping Cart Is Empty.</p>
           </div>
-          <button class="remove-btn" @click="cart.removeItem(item.id)">Delete</button>
+          <footer class="modal-footer">
+            <h3>Total Payment: $ {{ cart.totalPrice + "000" }}</h3>
+            <button class="checkout-btn">Finish</button>
+          </footer>
         </div>
-        <p v-if="cart.cartItem.length === 0" class="empty-cart">Shopping Cart Is Empty.</p>
-      </div>
-      <footer class="modal-footer">
-        <h3>Total Payment: $ {{ cart.totalPrice + "000" }}</h3>
-        <button class="checkout-btn">Finish</button>
-      </footer>
+      </transition>
     </div>
-  </div>
+  </transition>
 </template>
 
 <style scoped>
-.modal-backdrop {
+.modal-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
+  z-index: 9999;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateY(-100px);
+  opacity: 0;
+}
+.slide-enter-to,
+.slide-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
 }
 .modal {
   width: 400px;
+  min-height: 500px;
   max-height: 80vh;
   background: var(--light-color);
   border-radius: 16px;
@@ -65,14 +93,15 @@ function handleBackdropClick(e) {
   width: 400px;
   padding: 16px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  background: var(--primary-color);
-  color: white;
+  background: var(--secondary-color);
+  color: var(--light-color);
 }
 .close-btn {
   background: transparent;
   border: none;
-  color: white;
+  color: var(--light-color);
   font-size: 22px;
   cursor: pointer;
 }
@@ -91,8 +120,55 @@ function handleBackdropClick(e) {
   align-items: center;
 }
 .cart-img img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
+}
+.cart-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.cart-body h5 {
+  font-size: 16px;
+}
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  outline: none;
+  background: var(--primary-color);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.qty-btn:active {
+  transform: scale(0.9);
+}
+
+.qty-number {
+  font-size: 18px;
+  font-weight: 600;
+  width: 24px;
+  text-align: center;
+  color: #333;
 }
 .remove-btn {
   background: var(--secondary-color);
@@ -102,13 +178,11 @@ function handleBackdropClick(e) {
   border-radius: 8px;
   cursor: pointer;
 }
-
 .empty-cart {
   text-align: center;
   margin-top: 20px;
   color: #777;
 }
-
 .modal-footer {
   padding: 16px;
   border-top: 1px solid #ddd;
@@ -117,10 +191,10 @@ function handleBackdropClick(e) {
   align-items: center;
 }
 .checkout-btn {
-  background: #4caf50;
+  background: var(--primary-color);
   border: none;
   padding: 10px 16px;
-  color: white;
+  color: var(--light-color);
   border-radius: 10px;
   cursor: pointer;
 }

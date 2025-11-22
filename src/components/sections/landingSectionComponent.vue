@@ -2,7 +2,7 @@
 
 <template>
   <section class="landing-section">
-    <div class="section-content">
+    <div class="section-content centered">
       <p class="wellcome-text">Wellcome</p>
       <p class="subtitle">Discover and experirnce fine selection of international tastes</p>
       <button type="button" class="call-to-action">
@@ -23,10 +23,7 @@
 .section-content {
   width: 100%;
   height: 100dvh;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 16px;
   position: fixed;
   z-index: -3;

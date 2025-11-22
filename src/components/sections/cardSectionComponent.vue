@@ -1,11 +1,13 @@
 <script setup>
 import { menuItems } from "@/data/menuItems";
 import cardComponent from "../cards/cardComponent.vue";
+
+const items = menuItems.pizza.slice(0, 7);
 </script>
 
 <template>
   <section class="card-section">
-    <cardComponent v-for="pizza in menuItems.pizza" :key="pizza.id" :item="pizza" />
+    <cardComponent variant="black" v-for="pizza in items" :key="pizza.id" :item="pizza" />
   </section>
 </template>
 
