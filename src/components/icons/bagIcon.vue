@@ -1,5 +1,12 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <svg
+    id="svg"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
     <path
       d="M9 7L9.75 7L9 7ZM9.75 6C9.75 5.58579 9.41421 5.25 9 5.25C8.58579 5.25 8.25 5.58579 8.25 6L9.75 6ZM15.75 6C15.75 5.58579 15.4142 5.25 15 5.25C14.5858 5.25 14.25 5.58579 14.25 6H15.75ZM15 7L15.75 7V7H15ZM12 10V10.75V10ZM9.75 7L9.75 6L8.25 6L8.25 7L9.75 7ZM14.25 6V7H15.75V6H14.25ZM12 9.25C10.7574 9.25 9.75 8.24264 9.75 7L8.25 7C8.25 9.07107 9.92893 10.75 12 10.75V9.25ZM12 10.75C14.0711 10.75 15.75 9.07107 15.75 7L14.25 7C14.25 8.24264 13.2426 9.25 12 9.25V10.75Z"
     />
@@ -10,7 +17,7 @@
 </template>
 
 <style scoped>
-svg path {
-  fill: var(--light-color);
+#svg path {
+  fill: var(--svg-fill-color, var(--light-color));
 }
 </style>

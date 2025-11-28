@@ -1,5 +1,6 @@
 <script setup>
 import { useCartStore } from "@/stores/cart";
+import { useRouter } from "vue-router";
 import bagAddIcon from "../icons/bagAddIcon.vue";
 import starIcon from "../icons/starIcon.vue";
 
@@ -15,17 +16,22 @@ const props = defineProps({
 });
 
 const cart = useCartStore();
+const router = useRouter();
 
 function handleAddToCart() {
   cart.addToCart(props.item, 1);
   cart.showNotification(`${props.item.name} added to cart`, "success");
 }
+
+const goToProductPage = () => {
+  router.push(`/product-page/${props.item.id}`);
+};
 </script>
 
 <template>
-  <div class="card" :class="variant">
+  <div class="card" :class="variant" @click="goToProductPage">
     <div class="card-header">
-      <h3>{{ props.item.name }}</h3>
+      <h3 @click="goToProductPage">{{ props.item.name }}</h3>
     </div>
     <div class="card-img">
       <img :src="props.item.image" alt="props.item.name" />
@@ -57,6 +63,8 @@ function handleAddToCart() {
   padding: 20px 0 0;
   overflow: hidden;
   font-family: "font-2", sans-serif;
+  cursor: pointer;
+  z-index: 999;
 }
 .card.black {
   color: var(--light-color);
@@ -66,8 +74,8 @@ function handleAddToCart() {
   color: var(--primary-color);
   background-color: var(--light-color);
 }
-.card:hover img {
-  transform: rotate(360deg);
+.card-header {
+  pointer-events: none;
 }
 .card .card-img {
   width: 200px;
@@ -79,7 +87,10 @@ function handleAddToCart() {
 .card .card-img img {
   width: 150px;
   height: 150px;
-  transition: all 1.5s ease;
+  transition: all 0.5s ease;
+}
+.card :hover img {
+  scale: 1.1;
 }
 .card .card-body {
   width: 100%;
@@ -120,10 +131,19 @@ function handleAddToCart() {
   cursor: pointer;
   border-top-left-radius: 16px;
   transform: translateY(2px);
+  overflow: hidden;
+}
+.card-btn button svg {
+  scale: 1.3;
 }
 .card-btn button:hover svg {
-  scale: 1.2;
-  transition: all 0.3s ease;
+  animation: moveUp 0.5s ease-in-out;
+}
+
+@keyframes moveUp {
+  to {
+    transform: translateY(-50px);
+  }
 }
 
 @media (width <= 768px) {

@@ -50,11 +50,11 @@ function handleBackdropClick(e) {
 <style scoped>
 .modal-container {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
   z-index: 9999;
 }
 .fade-enter-from,
@@ -83,7 +83,7 @@ function handleBackdropClick(e) {
   width: 400px;
   min-height: 500px;
   max-height: 80vh;
-  background: var(--light-color);
+  background: var(--primary-color);
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -136,19 +136,18 @@ function handleBackdropClick(e) {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #fff;
+  background: var(--light-color);
   border-radius: 12px;
   padding: 6px 12px;
   border: 1px solid #ddd;
 }
-
 .qty-btn {
   width: 32px;
   height: 32px;
   border: none;
   outline: none;
   background: var(--primary-color);
-  color: white;
+  color: var(--light-color);
   font-size: 20px;
   font-weight: bold;
   border-radius: 8px;
@@ -158,11 +157,9 @@ function handleBackdropClick(e) {
   justify-content: center;
   transition: transform 0.15s ease, background 0.2s ease;
 }
-
 .qty-btn:active {
   transform: scale(0.9);
 }
-
 .qty-number {
   font-size: 18px;
   font-weight: 600;
@@ -197,5 +194,13 @@ function handleBackdropClick(e) {
   color: var(--light-color);
   border-radius: 10px;
   cursor: pointer;
+}
+.modal-footer h3 {
+  color: var(--light-color);
+}
+.modal-footer button {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+  font-weight: bold;
 }
 </style>

@@ -1,15 +1,18 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { useCartStore } from "@/stores/cart";
+import { useMenuStore } from "@/stores/menu";
 import bagIcon from "../icons/bagIcon.vue";
 import userIcon from "../icons/userIcon.vue";
 import homeBoldIcon from "../icons/homeBoldIcon.vue";
 import menuBoldIcon from "../icons/manuBoldIcon.vue";
-import blogBoldIcon from "../icons/blogBoldIcon.vue";
+import blogIcon from "../icons/blogIcon.vue";
 import pinBoldIcon from "../icons/pinBoldIcon.vue";
-import chatBoldIcon from "../icons/chatBoldIcon.vue";
+import chatIcon from "../icons/chatIcon.vue";
+import menuIcon from "../icons/menuIcon.vue";
 
 const cart = useCartStore();
+const menu = useMenuStore();
 
 function handleCartClick() {
   cart.toggleCart();
@@ -19,28 +22,34 @@ function handleCartClick() {
 <template>
   <div class="desktop-navbar">
     <div class="actions">
-      <button type="button" class="action-btn"><userIcon /></button>
-      <button type="button" class="action-btn" @click="handleCartClick"><bagIcon /></button>
+      <button type="button" class="action-btn">
+        <userIcon />
+        <div class="btn-effect"></div>
+      </button>
+      <button type="button" class="action-btn" @click="handleCartClick">
+        <bagIcon />
+        <div class="btn-effect"></div>
+      </button>
     </div>
     <nav>
       <div class="link-group">
-        <homeBoldIcon />
-        <RouterLink>Home</RouterLink>
+        <homeBoldIcon color="white" />
+        <RouterLink to="/">Home</RouterLink>
       </div>
       <div class="link-group">
-        <menuBoldIcon />
-        <RouterLink>Menu</RouterLink>
+        <menuBoldIcon color="white" />
+        <RouterLink to="/menu">Menu</RouterLink>
       </div>
       <div class="link-group">
-        <pinBoldIcon />
-        <RouterLink>Reservation</RouterLink>
+        <pinBoldIcon color="white" />
+        <RouterLink to="/reservation">Reservation</RouterLink>
       </div>
       <div class="link-group">
-        <blogBoldIcon />
+        <blogIcon />
         <RouterLink>Blog</RouterLink>
       </div>
-      <div class="lonk-group">
-        <chatBoldIcon />
+      <div class="link-group">
+        <chatIcon />
         <RouterLink>contact</RouterLink>
       </div>
     </nav>
@@ -48,10 +57,23 @@ function handleCartClick() {
       <h2>LOGO</h2>
     </div>
   </div>
+  <div class="mobile-navbar">
+    <div class="actions">
+      <button type="button" class="action-btn"><userIcon /></button>
+      <button type="button" class="action-btn" @click="handleCartClick"><bagIcon /></button>
+    </div>
+    <div class="menu-icon">
+      <button class="action-btn" @click="menu.toggleMenu">
+        <menuIcon />
+        <div class="btn-effect"></div>
+      </button>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 .desktop-navbar {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,16 +88,34 @@ function handleCartClick() {
   border-radius: 16px;
   border: 2px solid var(--light-color);
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
-.link-group {
-  display: flex;
+.action-btn:hover #svg {
+  transition: all 0.5s ease;
+  --svg-stroke-color: var(--primary-color);
+  --svg-fill-color: var(--primary-color);
+}
+.action-btn:hover .btn-effect {
+  top: 0;
+}
+.mobile-navbar {
+  justify-content: space-between;
   align-items: center;
-  gap: 4px;
+  display: none;
+}
+@keyframes moveUp {
+  to {
+    transform: translateY(-50px);
+  }
 }
 
 @media (width < 768px) {
   .desktop-navbar {
     display: none;
+  }
+  .mobile-navbar {
+    display: flex;
   }
 }
 </style>

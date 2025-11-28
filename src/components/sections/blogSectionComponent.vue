@@ -48,6 +48,7 @@ import { blogItems } from "@/data/blogItems";
   flex-direction: column;
   align-items: center;
   gap: 1.6rem;
+  margin-bottom: 2rem;
 }
 .blog-img {
   width: 350px;

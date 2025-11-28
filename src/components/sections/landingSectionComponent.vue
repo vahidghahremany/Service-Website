@@ -1,13 +1,39 @@
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+import { ref, onMounted, onUnmounted } from "vue";
+
+const router = useRouter();
+
+const goToReservation = () => {
+  router.push("/reservation");
+};
+
+const hideContent = ref(false);
+
+function checkingScroll() {
+  const firsScreenHeight = window.innerHeight * 0.2;
+  const currentScroll = window.scrollY;
+
+  hideContent.value = currentScroll > firsScreenHeight;
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", checkingScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", checkingScroll);
+});
+</script>
 
 <template>
   <section class="landing-section">
-    <div class="section-content centered">
+    <div class="section-content centered" :class="{ hidden: hideContent }">
       <p class="wellcome-text">Wellcome</p>
       <p class="subtitle">Discover and experirnce fine selection of international tastes</p>
-      <button type="button" class="call-to-action">
+      <button type="button" class="call-to-action" @click="goToReservation">
         <span>Book a Table</span>
-        <div class="effect"></div>
+        <div class="btn-effect"></div>
       </button>
     </div>
   </section>
@@ -18,7 +44,6 @@
   width: 100%;
   height: 100dvh;
   position: relative;
-  z-index: -5;
 }
 .section-content {
   width: 100%;
@@ -26,7 +51,6 @@
   flex-direction: column;
   gap: 16px;
   position: fixed;
-  z-index: -3;
 }
 .wellcome-text {
   font-size: clamp(42px, 8vw, 144px);
@@ -51,20 +75,15 @@
   overflow: hidden;
   position: relative;
 }
-.effect {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: #fff;
-  top: 100%;
-  left: 0;
-  transition: all 0.5s ease;
-  z-index: -4;
-}
-.call-to-action:hover .effect {
-  inset: 0;
+.call-to-action:hover .btn-effect {
+  top: 0;
 }
 .call-to-action:hover {
   color: #000;
+}
+.hidden {
+  transition: all 1s ease;
+  transform: translateY(-555px);
+  opacity: 0;
 }
 </style>

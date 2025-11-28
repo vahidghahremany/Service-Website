@@ -4,14 +4,31 @@
 }
 
 :root {
+  --bg: #0f0f0f;
   --primary-color: #1a1a1a;
   --secondary-color: #f20d33;
   --light-color: #fff;
   --info-color: #ffdb2f;
   --tertiary-color: #adb5bd;
+  --panel: #151517;
+  --gold: #eab308;
+  --muted: #9ca3af;
+  --border-color: #3f3f46;
+  --accent: #10b981;
+  --danger: #be123c;
   --overlay: rgba(0, 0, 0, 0.7);
   --primary-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --padding-base: 1.5rem;
+  --color-primary-dark: #cc3700;
+  --color-background-dark: #1a1a1a;
+  --color-surface: #292929;
+  --color-surface-light: #363636;
+  --color-text-light: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-available: #008000;
+  --color-occupied: #cc0000;
+  --color-chair: #3f3f46;
 }
 
 *,
@@ -26,6 +43,7 @@ body {
   width: 100%;
   position: relative;
   font-family: var(--primary-font);
+  scroll-behavior: smooth;
 }
 
 header {
@@ -33,8 +51,14 @@ header {
   position: fixed;
   padding: 2rem;
   color: var(--light-color);
-  z-index: 9;
+  z-index: 99;
   transition: all 0.5s ease;
+}
+
+footer {
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--primary-color);
 }
 
 header.hide {
@@ -50,6 +74,7 @@ nav {
 main {
   width: 100%;
   position: relative;
+  z-index: 9;
 }
 
 a {
@@ -60,6 +85,17 @@ a {
 button {
   background: none;
   border: none;
+}
+
+.btn-effect {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #fff;
+  top: 100%;
+  left: 0;
+  transition: all 0.5s ease;
+  z-index: -4;
 }
 
 .centered {
@@ -75,6 +111,32 @@ button {
   background-color: var(--overlay);
   z-index: -9;
   pointer-events: none;
+}
+
+.link-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.link-group::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 4px;
+  background-color: var(--light-color);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0) translateY(4px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.link-group:hover::before {
+  transform-origin: left;
+  transform: scaleX(1) translateY(4px);
 }
 
 p.flip {
@@ -155,4 +217,28 @@ p.flip span.deg3 {
   -ms-transform: rotate(135deg);
   transform: rotate(135deg);
   margin: 0 auto;
+  position: absolute;
+}
+
+.slide-up-enter-from .menu-panel {
+  transform: translateY(100%);
+  opacity: 0.7;
+}
+
+.slide-up-enter-to .menu-panel {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-up-enter-active .menu-panel,
+.slide-up-leave-active .menu-panel {
+  transition: all 0.35s cubic-bezier(0.22, 0.88, 0.53, 1);
+}
+
+.slide-up-leave-from .menu-panel {
+  transform: translateY(0);
+}
+
+.slide-up-leave-to .menu-panel {
+  transform: translateY(100%);
 }

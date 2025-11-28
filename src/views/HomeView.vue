@@ -1,6 +1,4 @@
 <script setup>
-import notificationComponent from "@/components/modals/notificationComponent.vue";
-import cartModalComponent from "@/components/modals/cartModalComponent.vue";
 import heroSectionComponent from "@/components/sections/heroSectionComponent.vue";
 import landingSectionComponent from "@/components/sections/landingSectionComponent.vue";
 import cardSectionComponent from "@/components/sections/cardSectionComponent.vue";
@@ -9,11 +7,11 @@ import offersSectionComponent from "@/components/sections/offersSectionComponent
 import apptizerSectionComponent from "@/components/sections/apptizerSectionComponent.vue";
 import menuSectionComponent from "@/components/sections/menuSectionComponent.vue";
 import blogSectionComponent from "@/components/sections/blogSectionComponent.vue";
+import contactSectionComponent from "@/components/sections/contactSectionComponent.vue";
+import footerComponent from "@/components/layout/footerComponent.vue";
 </script>
 
 <template>
-  <notificationComponent />
-  <cartModalComponent />
   <heroSectionComponent />
   <landingSectionComponent />
   <cardSectionComponent />
@@ -22,4 +20,6 @@ import blogSectionComponent from "@/components/sections/blogSectionComponent.vue
   <apptizerSectionComponent />
   <menuSectionComponent />
   <blogSectionComponent />
+  <contactSectionComponent />
+  <footerComponent />
 </template>
