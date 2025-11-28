@@ -1,6 +1,36 @@
-# shopping-website
+# 🍽 Vue Restaurant Reservation & Food Ordering App
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern, responsive web application built with Vue.js for restaurant table reservations and online food ordering.
+
+---
+
+## 🚀 Project Overview
+
+This project is a fully responsive restaurant web application built using Vue.js and CSS.  
+It allows users to browse the menu, reserve tables, and manage orders with a dynamic shopping cart. All animations are custom-made, providing a smooth and interactive user experience.
+
+---
+
+## 🌟 Key Features
+
+- Table Reservation System: Users can reserve tables with date, time, and number of guests.
+- Shopping Cart: Add menu items to a cart and manage orders easily.
+- Multiple Pages with Vue Router: Smooth navigation across different pages.
+- State Management with Pinia: Efficient management of cart and reservation data.
+- Responsive Design: Works perfectly on mobile, tablet, and desktop devices.
+- Custom Animations: All animations are handcrafted for a unique experience.
+
+---
+
+## 🛠 Technologies Used
+
+- Vue.js 3 (Composition API)
+- Pinia (State Management)
+- Vue Router (Multi-page navigation)
+- HTML5, CSS3, JavaScript (No external frameworks for styling)
+- Responsive Design (Flexbox & Grid)
+
+---
 
 ## Recommended IDE Setup
 
@@ -9,7 +39,7 @@ This template should help get you started developing with Vue 3 in Vite.
 ## Recommended Browser Setup
 
 - Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
+  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
   - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
 - Firefox:
   - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
