@@ -2,9 +2,9 @@
 import { useMenuStore } from "@/stores/menu";
 import homeBoldIcon from "../icons/homeBoldIcon.vue";
 import menuBoldIcon from "../icons/manuBoldIcon.vue";
-import blogIcon from "../icons/blogIcon.vue";
+import blogBoldIcon from "../icons/blogBoldIcon.vue";
 import pinBoldIcon from "../icons/pinBoldIcon.vue";
-import chatIcon from "../icons/chatIcon.vue";
+import chatBoldIcon from "../icons/chatBoldIcon.vue";
 
 const menu = useMenuStore();
 </script>
@@ -27,12 +27,12 @@ const menu = useMenuStore();
         <RouterLink to="/reservation" @click="menu.closeMenu">Reservation</RouterLink>
       </div>
       <div class="link-group">
-        <blogIcon />
-        <RouterLink to="/blog" @click="menu.closeMenu">Blog</RouterLink>
+        <blogBoldIcon />
+        <RouterLink to="/" @click="menu.closeMenu">Blog</RouterLink>
       </div>
       <div class="link-group">
-        <chatIcon />
-        <RouterLink to="/contact" @click="menu.closeMenu">Contact</RouterLink>
+        <chatBoldIcon />
+        <RouterLink to="/" @click="menu.closeMenu">Contact</RouterLink>
       </div>
     </nav>
   </div>

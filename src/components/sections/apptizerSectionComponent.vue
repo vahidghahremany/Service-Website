@@ -44,7 +44,7 @@ const offersItem = menuItems.appetizers.slice(0, 7);
 }
 .cards-row {
   display: flex;
-  gap: 2rem;
+  gap: 1.6rem;
   flex-wrap: wrap;
   justify-content: center;
   padding: 2rem;

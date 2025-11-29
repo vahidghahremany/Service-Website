@@ -46,11 +46,11 @@ function handleCartClick() {
       </div>
       <div class="link-group">
         <blogIcon />
-        <RouterLink>Blog</RouterLink>
+        <RouterLink to="/">Blog</RouterLink>
       </div>
       <div class="link-group">
         <chatIcon />
-        <RouterLink>contact</RouterLink>
+        <RouterLink to="/">contact</RouterLink>
       </div>
     </nav>
     <div class="logo">

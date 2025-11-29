@@ -32,6 +32,24 @@ It allows users to browse the menu, reserve tables, and manage orders with a dyn
 
 ---
 
+## 🎬 Live Preview
+
+<video src="tps://github.com/user-attachments/assets/1733d0c8-9011-4c21-bac4-1af34773b6a0"></video>
+
+---
+
+## 🎬 Live Preview
+
+<video src="https://github.com/user-attachments/assets/2fff6047-baf1-48a2-8c65-85c4b1d62029"></video>
+
+---
+
+## 🎬 Live Preview
+
+<video src="https://github.com/user-attachments/assets/0ad964c7-376b-4e27-83dd-f1425aa17e75"></video>
+
+---
+
 ## Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

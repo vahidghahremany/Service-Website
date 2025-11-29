@@ -78,21 +78,6 @@ const store = useReservationStore();
   overflow: hidden;
 }
 
-/* Scrollbar and Layout Styles */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-surface);
-}
-::-webkit-scrollbar-thumb {
-  background: #4b5563;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-color);
-}
-
 .plan-area {
   position: relative;
   flex-grow: 1;
