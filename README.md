@@ -34,19 +34,19 @@ It allows users to browse the menu, reserve tables, and manage orders with a dyn
 
 ## 🎬 Live Preview
 
-<video src="https://github.com/user-attachments/assets/1733d0c8-9011-4c21-bac4-1af34773b6a0"></video>
+<video src="https://github.com/user-attachments/assets/b5a734cf-818a-4f78-a39b-9e3e000a593d"></video>
 
 ---
 
 ## 🎬 Live Preview
 
-<video src="https://github.com/user-attachments/assets/2fff6047-baf1-48a2-8c65-85c4b1d62029"></video>
+<video src="https://github.com/user-attachments/assets/2b2baf4c-f6a2-4634-81cc-9820aec749c7"></video>
 
 ---
 
 ## 🎬 Live Preview
 
-<video src="https://github.com/user-attachments/assets/0ad964c7-376b-4e27-83dd-f1425aa17e75"></video>
+<video src="https://github.com/user-attachments/assets/992d784c-703b-4998-95c4-b7baf63c56d3"></video>
 
 ---
 
