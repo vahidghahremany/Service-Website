@@ -34,7 +34,7 @@ It allows users to browse the menu, reserve tables, and manage orders with a dyn
 
 ## 🎬 Live Preview
 
-<video src="tps://github.com/user-attachments/assets/1733d0c8-9011-4c21-bac4-1af34773b6a0"></video>
+<video src="https://github.com/user-attachments/assets/1733d0c8-9011-4c21-bac4-1af34773b6a0"></video>
 
 ---
 
